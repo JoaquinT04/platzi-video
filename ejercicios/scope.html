@@ -26,7 +26,10 @@
 						eventuallyPrintNumber(i);
 					}
 				}
-				printNumbers(); 
+				printNumbers();
+				
+				
+				primero se cumple el ciclo for y luego se ejecuta el setTimeout
 			*/
 
 
@@ -34,15 +37,16 @@
 
 
 			function printNumbers(){
-					for(let i = 0; i < 10; i++){
-						setTimeout(function(){
-							console.log(i);
-						}, 100);
-					}
+				for(let i = 0; i < 10; i++){
+					setTimeout(function(){
+						console.log(i);
+					}, 100);
 				}
-				printNumbers();
+			}
+			printNumbers();
 
 
+			// Module Scope	
 		</script>
   </body>
 </html>
