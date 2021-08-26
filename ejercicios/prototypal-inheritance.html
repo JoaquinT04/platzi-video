@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>prototypal inheritance</title>
+  </head>
+  <body>
+		<a href="/ejercicios/index.html">Go back</a>
+
+		<p><em>Abre Consola</em></p>
+
+		<h1>
+			Some.Object.prototype es un objeto donde definimos el prototipo de las instancias de <code>someObject</code>. Es decir, las instancias de <code>someObject</code> van a "heredar" de <code>someObject.prototype</code>.
+		</h1>
+		<br>
+		<h1>
+			<code>someObject.[[Prototype]]</code> es el prototipo de <code>someObject</code>. Es decir, <code>someObject</code> "hereda" de <code>someObject.prototype</code>.
+		</h1>
+
+		<script>
+			function Hero(name) {
+				this.name = name;
+			}
+
+			Hero.prototype.saludar = function() {
+				console.log(`Hola, soy ${this.name}.`);
+			};
+
+			const zelda = new Hero('Zelda');
+			// propiedades de la instancia
+			console.log('Name: ', zelda.name);
+			
+			// propiedades de la "clase"
+			console.log('Saludar:', zelda.saludar);
+
+			//propiedades heredadas ej: toString
+			console.log('toString:', zelda.toString);
+
+			// hasOwnProperty (de dónde sale toString o esto?)
+			console.log('zelda.hasOwnProperty("name"):', zelda.hasOwnProperty("name"));
+
+			console.log('zelda.hasOwnProperty("saludar"):', zelda.hasOwnProperty("saludar"));
+			
+			const prototypeOfZelda = Object.getPrototypeOf(zelda);
+
+			console.log('prototypeOfZelda === Hero.prototype:', prototypeOfZelda === Hero.prototype);
+
+			Hero.prototype.fight = function() {
+				console.log('FIGHT!!');
+			}
+
+			zelda.fight();
+
+			/*
+				zelda.fight no existe pero como zelda.__proto__.fight si existe se ejecuta
+			*/
+
+			const prototypeOfPrototypeOfZelda = Object.getPrototypeOf(Hero.prototype);
+
+			console.log("prototypeOfPrototypeOfZelda.hasOwnProperty(toString):", prototypeOfPrototypeOfZelda.hasOwnProperty("toString"))
+
+
+
+		</script>
+  </body>
+</html>
