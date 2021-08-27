@@ -1,8 +1,10 @@
 class AutoPlay {
 	constructor() { }
 	run(player) {
-		player.muteUnmute();
-		player.playPause();
+		if(!player.muted){
+			player.muted = true;
+		}
+		player.play();
 	}
 }
 

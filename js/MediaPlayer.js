@@ -11,8 +11,21 @@ class MediaPlayer {
 	}
 
 	_initPlugins(){
+		const player = {
+			play: () => this.play(),
+			pause: () => this.pause(),
+			media: this.media,
+			get muted(){
+				return this.media.muted;
+			}, 
+
+			set muted(value){
+				this.media.muted = value;
+			},
+		};
+		
 		this.plugins.forEach(plugin => {
-			plugin.run(this);
+			plugin.run(player);
 		})
 	}
 	
@@ -20,12 +33,20 @@ class MediaPlayer {
 		this.media.muted = !this.media.muted;
 	}
 
+	play() {
+		this.media.play();
+	}
+
+	pause() {
+		this.media.pause();
+	}
+
 	playPause(){
 		if(this.media.paused){
-			this.media.play();
+			this.play();
 		}
 		else{
-			this.media.pause();
+			this.pause();
 		}
 	}
 }
