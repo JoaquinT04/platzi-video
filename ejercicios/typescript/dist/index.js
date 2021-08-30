@@ -1,35 +1,31 @@
-// Boolean
-let muted = true; // con esto typescript ya sabe que esa variable es un boolean
-/* Pero podemos ser más especificos
-    let muted: boolean = true;
+// Funciones
+function add(a, b) {
+    return a + b;
+}
+/*
+    function add( a: number, b: number ): tipo que regresa{
+        return a + b;
+    }
 */
-muted = false;
-// Números
-let age = 6;
-let numerador = 42;
-let denominador = age;
-let resultado = numerador / denominador;
-// String
-let nombre = 'Richard';
-let saludo = `Me llamo ${nombre}`;
-// Arreglos 
-let people = [];
-people = ['Isabel', 'Nicol', 'Raul'];
-// people.push(9000); error
-let peopleAndNumbers = [];
-peopleAndNumbers.push('Ricardo');
-peopleAndNumbers.push(9500);
-// Enum
-var Color;
-(function (Color) {
-    Color["Rojo"] = "Rojo";
-    Color["Verde"] = "Verde";
-    Color["Azul"] = "Azul";
-})(Color || (Color = {}));
-let colorFavorito = Color.Rojo;
-console.log(`Mi color favorito es ${colorFavorito}`);
-// Any
-let comodin = "Joker";
-comodin = { type: "Wildcard" };
-// Object
-let someObject = { type: "Wildcard" };
+const sum = add(5, 2);
+// Funciones que regresan otras funciones
+function createAdder(a) {
+    return function (b) {
+        return b + a;
+    };
+}
+const addFour = createAdder(4);
+const fourPlus6 = addFour(6);
+console.log(fourPlus6);
+// Argumentos / Parametros que no son obligatorios
+function fullName(firstName, lastName = 'Smith') {
+    return `${firstName} ${lastName}`;
+}
+/*
+    El signo de interrogación antes de los dos puntos indica que ese argumento puede ser undefined o string.
+
+    También puedo escribir un valor por defecto para los argumentos agregando un signo igual despues del tipo de dato y escribiendo el valor que va a tener ese argumento en caso de que no se le envie ese parametro
+
+*/
+const richard = fullName('Richard');
+console.log(richard);
