@@ -24,12 +24,12 @@ async function precache() {
 	const cache = await caches.open(VERSION);
 	return cache.addAll([
 		'./',
-		'./ejercicios/index.html',
+		'./media-player-project/index.html',
 		'./CSS/index.css',
-		'./js/index.js',
-		'./js/MediaPlayer.js',
-		'./js/plugins/AutoPause.js',
-		'./js/plugins/AutoPlay.js',
+		'./media-player-project/dist/index.js',
+		'./media-player-project/dist/MediaPlayer.js',
+		'./media-player-project/dist/plugins/AutoPause.js',
+		'./media-player-project/dist/plugins/AutoPlay.js',
 		'./Assets/BigBuckBunny.mp4',
 	])
 }
